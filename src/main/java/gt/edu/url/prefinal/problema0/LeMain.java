@@ -32,7 +32,7 @@ public class LeMain {
         if(test == '9'){
             System.out.println("Se obtuvo la mano correcta");
         }else{
-            System.out.println("Se obtuvo un error");
+            System.out.println("Se obtuvo un caracter diferente");
         }
             
         

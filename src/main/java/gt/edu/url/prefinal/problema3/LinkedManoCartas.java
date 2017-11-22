@@ -36,13 +36,33 @@ public class LinkedManoCartas implements ManoCartas {
                 case "diamante":resultado = mano.remove(diamante); break;
                 case "trebol":resultado = mano.remove(trebol); break;
             }
-            return resultado;
-        } catch (IllegalArgumentException|NullPointerException e) {
+        } catch (IllegalArgumentException e) {
             //Check one by one if not null
             System.out.println("La posicion no existe");
+            
         }
         
-        return null;
+        //Retornar la primera que funcione
+        if(resultado == null){
+            try {
+                resultado = mano.remove(espada);
+            } catch (Exception e) {
+                try {
+                    resultado = mano.remove(corazon);
+                } catch (Exception e1) {
+                    try {
+                        resultado = mano.remove(diamante);
+                    } catch (Exception e2) {
+                        try {
+                            resultado = mano.remove(trebol);
+                        } catch (Exception e3) {
+                        }
+                    }
+                }
+            }
+        }
+        
+        return resultado;
     }
     
     public Position<Character> addOrCreate(Character valor, Position<Character> referencia, CategoriaCartas<Character> coleccion){
